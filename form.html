@@ -1,0 +1,111 @@
+<html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<head>
+   <script src="js2.js"></script> 
+   <style>
+      body{ font-family: arial; }
+      h1{ text-align: center; padding: 20px; margin: 50px 0 0 0; }
+      #container{
+         max-width: 1200px;
+         margin: 0 auto;
+         width: 100%;         
+      }
+      #container textarea{ width: 30%; margin: 1%; float: left; height: 200px; font-family: Arial; font-size: 18px; padding: 15px; }
+      button{ border:0; padding: 10px 30px; margin: 0 1%; background: #ccc; font-size: 20px; cursor: pointer; }
+      .clear{ clear: both; }
+
+      #forms.fixed {
+       position: fixed;
+       width: 100%;
+       top: 0;
+       left: 0;
+       z-index: 2;
+       background: #00000080;
+    }
+
+    #forms a {
+     background: #ccc;
+     padding: 15px;
+     display: inline-block;
+     font-size: 20px;
+     text-decoration: none;
+  }
+
+  @media screen and (max-width: 1000px) {
+   #container textarea{
+      width: 100%;
+   }
+}
+
+</style>
+</head>
+<body>
+
+   <div id="forms" class="autocomplete fixed">
+      <div id="container">
+
+
+         <a href="index.html">Trang chủ</a>
+
+
+      </div>
+   </div>
+
+
+   <div id="container">
+      <h1>Tình huống gặp phải</h1>
+      <form id="test-form1" method="GET" action="https://script.google.com/macros/s/AKfycbz06wd6q0YFCz5MFyK9cEsT81MJIvnrqH4J274CcQzMemJ24F6e/exec">         
+
+        <textarea name="CauHoi" placeholder="Câu hỏi của khách (viết tiếng Việt) "></textarea>
+        <textarea name="TraLoi" placeholder="Trả lời bằng tiếng Việt (nếu không trả lời được để trống)"></textarea>
+        <textarea name="TiengTrung"  placeholder="Trả lời bằng tiếng Trung (nếu không trả lời được để trống)"></textarea>    
+        <i class="clear"></i>
+        <button type="submit" id="submit-form1">Gửi</button>
+
+     </form>
+  </div>
+
+  <script>
+
+   $(document).ready(function () {
+
+     $("#submit-form1").click(function(){
+
+      $(this).attr("disabled", true);
+
+      var data = $('form#test-form1').serialize();
+      $.ajax({
+        type : 'GET', 
+
+        url : 'https://script.google.com/macros/s/AKfycbz06wd6q0YFCz5MFyK9cEsT81MJIvnrqH4J274CcQzMemJ24F6e/exec',
+        dataType:'json',
+        crossDomain : true,
+        data : data,
+        beforeSend: function() 
+        {
+          $("#submit-form1").text("Chờ một chút...");
+       },
+       success : function(data)
+       { 
+          if(data == 'false') 
+          {
+            alert('Lỗi không thêm được!');
+         }
+         else
+         {                               
+
+            $("#submit-form1").text("Gửi thành công");
+         }
+
+      }
+   });
+      return false;
+   });
+  });
+
+</script>
+
+
+</body>
+<html>
