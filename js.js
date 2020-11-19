@@ -202,3 +202,13 @@ jQuery(function ($) {
 		
 
 	});
+
+function closemenu(){
+		document.getElementById('menubg').style.display='none';	
+		
+	}
+
+	function openmenu(){
+		document.getElementById('menubg').style.display='block';	
+		
+	}

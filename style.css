@@ -33,7 +33,9 @@ table {
     transition: all 0.3s;
 }
 
-.search-table tr:nth-of-type(2n+1) {/*     background: #f1f1f1; */}
+.search-table tr:nth-of-type(2n+1) {
+    /*     background: #f1f1f1; */
+}
 
 .search-table tr {
     transition: all 0.3s;
@@ -56,7 +58,11 @@ table {
     margin: 0 auto;
 }
 
-#stext, #sselect {
+#sselect {
+    width: 130px;
+}
+
+#stext {
     width: 200px
 }
 
@@ -175,41 +181,64 @@ body {
     display: none;
 }
 
-#vtl{
+#vtl {
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 7px;
     width: 70%;
     display: inline-block;
 }
-#vtlb span{
-        background: #ccc;
-        padding: 8px;
-        cursor: pointer;
-        width: 10%;
-        display: inline-block;
-        text-align: center;
+
+#vtlb span {
+    background: #ccc;
+    padding: 8px;
+    cursor: pointer;
+    width: 10%;
+    display: inline-block;
+    text-align: center;
 }
 
 .note {
+    background-color: #4c7c24;
+    color: #fff;
+    animation-name: example;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
 
-  background-color: #4c7c24;
-  color: #fff;
-  animation-name: example;
-  animation-duration: 2s;
-   animation-iteration-count: infinite;
+#menub {
+    background: #ccc;
+    margin: 0;
+    text-align: center;
+    padding: 7px;
+    display: none;
 }
 
 @keyframes example {
-  from {background-color: #4c7c24; color: #fff;}
-  to {background-color: #f1f1f1; color: #000;}
+    from {
+        background-color: #4c7c24;
+        color: #fff;
+    }
+
+    to {
+        background-color: #f1f1f1;
+        color: #000;
+    }
 }
 
 @media screen and (max-width: 1000px) {
+    #menub {
+        display: block;
+    }
+
+    .hmb {
+        display: none !important;
+    }
+
     #forms {
-    padding: 3px;
-    
-}
+        padding: 3px;
+    }
+
     #forms i {
         display: block;
     }
@@ -255,6 +284,80 @@ body {
     }
 
     .search-table > tbody > tr:nth-of-type(odd) {
-/*         background-color: #f9f9f9 ; */
+        /*         background-color: #f9f9f9 ; */
     }
+}
+
+.menubg {
+    position: fixed;
+    z-index: 6;
+    overflow: hidden;
+    width: 100%;
+    max-width: 80%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: none
+}
+
+.menu {
+    position: fixed;
+    z-index: 9;
+    background: #fff;
+    overflow: scroll;
+    width: 80%;
+    max-width: 400px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 2px 13px #737373;
+}
+
+.menu .title_c {
+    font-size: 0.7rem;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.8rem;
+    background: #008486;
+}
+
+.menu .title {
+    text-align: center;
+    color: #025fbe;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    margin: 0.2rem;
+    background: #eaeaea;
+}
+
+.menu .title a {
+    color: #025fbe;
+    display: block;
+    padding: 10px;
+}
+
+.menu .lanmu ul {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.menu .lanmu ul li {
+    flex: 48%;
+    text-align: center;
+    background: #008486;
+    margin: 1%;
+    border-radius: 0.1rem;
+    font-size: 0.6rem;
+    line-height: 0.8rem;
+}
+
+.menu .lanmu a {
+    color: #fff;
+    padding: 0.2rem 0;
+    display: block;
 }
